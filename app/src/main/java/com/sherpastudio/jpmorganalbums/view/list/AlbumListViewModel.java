@@ -52,9 +52,9 @@ public class AlbumListViewModel extends ViewModel {
         return mObservableIsLoading;
     }
 
-    void refreshList(boolean forceReload){
+    void refreshList(){
         mObservableIsLoading.postValue(true);
-        GetAlbumsUseCase.RequestValues requestValue = new GetAlbumsUseCase.RequestValues(forceReload);
+        GetAlbumsUseCase.RequestValues requestValue = new GetAlbumsUseCase.RequestValues();
         mUseCaseHandler.execute(mGetAlbumsUseCase, requestValue, mUseCaseCallback);
     }
 }

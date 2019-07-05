@@ -27,7 +27,7 @@ public class AlbumListFragment extends Fragment {
     private SwipeRefreshLayout.OnRefreshListener mOnSwipeToRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
         @Override
         public void onRefresh() {
-            mViewModel.refreshList(true);
+            mViewModel.refreshList();
         }
     };
 
@@ -67,6 +67,6 @@ public class AlbumListFragment extends Fragment {
 
         mViewModel.getIsLoading().observe(getViewLifecycleOwner(), isLoading -> mBinding.swipeList.setRefreshing(isLoading));
 
-        mViewModel.refreshList(true);
+        mViewModel.refreshList();
     }
 }

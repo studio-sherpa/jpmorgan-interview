@@ -1,8 +1,7 @@
-package com.sherpastudio.jpmorganalbums.model.repository;
+package com.sherpastudio.jpmorganalbums.model.repository.remote;
 
 import com.sherpastudio.jpmorganalbums.model.IDataRepository;
 import com.sherpastudio.jpmorganalbums.model.data.Album;
-import com.sherpastudio.jpmorganalbums.model.repository.io.RetrofitAlbumsClient;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -11,24 +10,24 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import retrofit2.Response;
 
-public class DataRepository implements IDataRepository {
+public class RemoteDataRepository implements IDataRepository {
 
-    private static DataRepository sInstance;
+    private static RemoteDataRepository sInstance;
     private final RetrofitAlbumsClient mRetrofitAlbumsClient;
 
-    public static DataRepository getInstance(@NonNull RetrofitAlbumsClient retrofitAlbumsClient) {
+    public static RemoteDataRepository getInstance(@NonNull RetrofitAlbumsClient retrofitAlbumsClient) {
         if (sInstance == null) {
-            sInstance = new DataRepository(retrofitAlbumsClient);
+            sInstance = new RemoteDataRepository(retrofitAlbumsClient);
         }
         return sInstance;
     }
 
-    private DataRepository(@NonNull RetrofitAlbumsClient retrofitAlbumsClient) {
+    private RemoteDataRepository(@NonNull RetrofitAlbumsClient retrofitAlbumsClient) {
         this.mRetrofitAlbumsClient = retrofitAlbumsClient;
     }
 
     @Override
-    public List<Album> getAlbums(boolean forceReload) {
+    public List<Album> getAlbums() {
         Response<List<Album>> response;
         try {
             response = mRetrofitAlbumsClient.getService().listAllFruits().execute();
@@ -47,4 +46,7 @@ public class DataRepository implements IDataRepository {
             return null;
         }
     }
+
+    @Override
+    public void addAlbums(List<Album> albums) {}
 }

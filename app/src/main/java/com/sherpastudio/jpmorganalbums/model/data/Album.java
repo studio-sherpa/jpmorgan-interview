@@ -8,17 +8,17 @@ import androidx.annotation.NonNull;
 public class Album {
 
     @SerializedName("id")
-    private final int mId;
+    private final long mId;
 
     @SerializedName("title")
     private final String mTitle;
 
-    public Album(@IntRange(from=0) int id, @NonNull String title) {
+    public Album(@IntRange(from=0) long id, @NonNull String title) {
         this.mId = id;
         this.mTitle = title;
     }
 
-    public int getId(){
+    public long getId(){
         return mId;
     }
 
