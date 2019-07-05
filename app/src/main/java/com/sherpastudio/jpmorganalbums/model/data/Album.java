@@ -1,31 +1,31 @@
-package com.sherpastudio.jpmorganalbums.view.list;
+package com.sherpastudio.jpmorganalbums.model.data;
 
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 
-class AlbumItemData {
+public class Album {
 
     private final int mId;
     private final String mTitle;
 
-    AlbumItemData(@IntRange(from=0) int id, @NonNull String title) {
+    public Album(@IntRange(from=0) int id, @NonNull String title) {
         this.mId = id;
         this.mTitle = title;
     }
 
-    int getId(){
+    public int getId(){
         return mId;
     }
 
-    String getTitle() {
+    public String getTitle() {
         return mTitle;
     }
 
-    boolean isItemTheSame(AlbumItemData newItem) {
+    public boolean isItemTheSame(Album newItem) {
         return newItem.getId() == getId();
     }
 
-    boolean isContentTheSame(AlbumItemData newItem) {
+    public boolean isContentTheSame(Album newItem) {
         return getTitle().equals(newItem.getTitle());
     }
 }

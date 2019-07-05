@@ -1,4 +1,4 @@
-package com.sherpastudio.jpmorganalbums.view.helper;
+package com.sherpastudio.jpmorganalbums.helper;
 
 import com.sherpastudio.jpmorganalbums.view.list.AlbumListViewModel;
 
@@ -11,7 +11,10 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         if (modelClass == AlbumListViewModel.class) {
-            return (T) new AlbumListViewModel();
+            return (T) new AlbumListViewModel(
+                    Injection.provideUseCaseHandler(),
+                    Injection.provideGetAlbumsUseCase()
+            );
         }
         throw new IllegalArgumentException("unknown model class " + modelClass);
     }

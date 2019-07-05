@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.sherpastudio.jpmorganalbums.R;
+import com.sherpastudio.jpmorganalbums.model.data.Album;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,7 +18,7 @@ public class AlbumViewHolder extends RecyclerView.ViewHolder {
         mTitleView = itemView.findViewById(R.id.album_title);
     }
 
-    public void bind(AlbumItemData albumItemData) {
-        mTitleView.setText(albumItemData.getTitle());
+    public void bind(Album album) {
+        mTitleView.setText(album.getTitle());
     }
 }

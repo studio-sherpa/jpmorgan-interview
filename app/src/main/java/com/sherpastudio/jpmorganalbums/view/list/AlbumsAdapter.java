@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.sherpastudio.jpmorganalbums.R;
+import com.sherpastudio.jpmorganalbums.model.data.Album;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 class AlbumsAdapter extends RecyclerView.Adapter<AlbumViewHolder> {
 
-    private List<AlbumItemData> mItemList;
+    private List<Album> mItemList;
 
     AlbumsAdapter() {
         mItemList = new ArrayList<>();
     }
 
-    protected void setAlbums(@NonNull List<AlbumItemData> newAlbums) {
+    protected void setAlbums(@NonNull List<Album> newAlbums) {
         DiffUtil.DiffResult result = DiffUtil.calculateDiff(new DiffUtil.Callback() {
             @Override
             public int getOldListSize() {
@@ -34,16 +35,16 @@ class AlbumsAdapter extends RecyclerView.Adapter<AlbumViewHolder> {
 
             @Override
             public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-                AlbumItemData oldItem = mItemList.get(oldItemPosition);
-                AlbumItemData newItem = newAlbums.get(newItemPosition);
+                Album oldItem = mItemList.get(oldItemPosition);
+                Album newItem = newAlbums.get(newItemPosition);
                 return oldItem.isItemTheSame(newItem);
             }
 
             @Override
             public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
 
-                AlbumItemData oldItem = mItemList.get(oldItemPosition);
-                AlbumItemData newItem = newAlbums.get(newItemPosition);
+                Album oldItem = mItemList.get(oldItemPosition);
+                Album newItem = newAlbums.get(newItemPosition);
                 return oldItem.isContentTheSame(newItem);
             }
         });

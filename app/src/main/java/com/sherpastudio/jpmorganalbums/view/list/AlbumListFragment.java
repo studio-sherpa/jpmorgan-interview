@@ -1,7 +1,6 @@
 package com.sherpastudio.jpmorganalbums.view.list;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -10,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,15 +17,19 @@ import android.view.ViewGroup;
 
 import com.sherpastudio.jpmorganalbums.R;
 import com.sherpastudio.jpmorganalbums.databinding.AlbumListFragmentBinding;
-import com.sherpastudio.jpmorganalbums.view.helper.Injection;
-
-import java.util.List;
+import com.sherpastudio.jpmorganalbums.helper.Injection;
 
 public class AlbumListFragment extends Fragment {
 
     private AlbumListViewModel mViewModel;
     private AlbumListFragmentBinding mBinding;
     private AlbumsAdapter mAdapter;
+    private SwipeRefreshLayout.OnRefreshListener mOnSwipeToRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            mViewModel.refreshList(true);
+        }
+    };
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -53,10 +57,16 @@ public class AlbumListFragment extends Fragment {
         mBinding.recyclerList.setAdapter(mAdapter);
         mBinding.recyclerList.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
+        mBinding.swipeList.setOnRefreshListener(mOnSwipeToRefreshListener);
+
         mViewModel.getListItems().observe(getViewLifecycleOwner(), items -> {
             if(items == null) return;
             mBinding.swipeList.setRefreshing(false);
             mAdapter.setAlbums(items);
         });
+
+        mViewModel.getIsLoading().observe(getViewLifecycleOwner(), isLoading -> mBinding.swipeList.setRefreshing(isLoading));
+
+        mViewModel.refreshList(true);
     }
 }
