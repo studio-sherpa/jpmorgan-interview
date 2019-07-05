@@ -1,8 +1,10 @@
-package com.sherpastudio.jpmorganalbums;
+package com.sherpastudio.jpmorganalbums.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.sherpastudio.jpmorganalbums.R;
 
 public class MainActivity extends AppCompatActivity {
 
