@@ -2,35 +2,49 @@ package com.sherpastudio.jpmorganalbums.model.repository;
 
 import com.sherpastudio.jpmorganalbums.model.IDataRepository;
 import com.sherpastudio.jpmorganalbums.model.data.Album;
+import com.sherpastudio.jpmorganalbums.model.repository.io.RetrofitAlbumsClient;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import retrofit2.Response;
 
 public class DataRepository implements IDataRepository {
 
     private static DataRepository sInstance;
+    private final RetrofitAlbumsClient mRetrofitAlbumsClient;
 
-    public static DataRepository getInstance() {
+    public static DataRepository getInstance(@NonNull RetrofitAlbumsClient retrofitAlbumsClient) {
         if (sInstance == null) {
-            sInstance = new DataRepository();
+            sInstance = new DataRepository(retrofitAlbumsClient);
         }
         return sInstance;
     }
 
-    private DataRepository(){
-
+    private DataRepository(@NonNull RetrofitAlbumsClient retrofitAlbumsClient) {
+        this.mRetrofitAlbumsClient = retrofitAlbumsClient;
     }
 
     @Override
     public List<Album> getAlbums(boolean forceReload) {
-        return new ArrayList<>(Arrays.asList(
-                new Album(1, "Title"),
-                new Album(2, "Hello"),
-                new Album(3, "Album"),
-                new Album(4, "Diego"),
-                new Album(5, "Bo"),
-                new Album(6, "Nice")
-        ));
+        Response<List<Album>> response;
+        try {
+            response = mRetrofitAlbumsClient.getService().listAllFruits().execute();
+
+            if (response.isSuccessful()) {
+                if (response.body() != null) {
+                    return response.body();
+                } else {
+                    return Collections.emptyList();
+                }
+            } else {
+                return null;
+            }
+
+        } catch (IOException e) {
+            return null;
+        }
     }
 }

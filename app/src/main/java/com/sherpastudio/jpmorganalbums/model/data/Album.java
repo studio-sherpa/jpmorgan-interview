@@ -1,11 +1,16 @@
 package com.sherpastudio.jpmorganalbums.model.data;
 
+import com.google.gson.annotations.SerializedName;
+
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 
 public class Album {
 
+    @SerializedName("id")
     private final int mId;
+
+    @SerializedName("title")
     private final String mTitle;
 
     public Album(@IntRange(from=0) int id, @NonNull String title) {
