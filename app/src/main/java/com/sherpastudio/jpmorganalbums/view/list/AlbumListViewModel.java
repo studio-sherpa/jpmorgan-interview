@@ -42,6 +42,8 @@ public class AlbumListViewModel extends ViewModel {
         this.mObservableIsLoading = new MutableLiveData<>();
         this.emptyList = new MutableLiveData<>();
         this.mObservableAlbumsList = new MutableLiveData<>();
+
+        refreshList();
     }
 
     LiveData<List<Album>> getListItems() {

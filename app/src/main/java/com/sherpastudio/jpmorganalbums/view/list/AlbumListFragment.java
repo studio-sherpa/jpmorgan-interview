@@ -66,7 +66,5 @@ public class AlbumListFragment extends Fragment {
         });
 
         mViewModel.getIsLoading().observe(getViewLifecycleOwner(), isLoading -> mBinding.swipeList.setRefreshing(isLoading));
-
-        mViewModel.refreshList();
     }
 }
