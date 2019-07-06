@@ -19,8 +19,11 @@ import androidx.test.rule.ActivityTestRule;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static com.sherpastudio.jpmorganalbums.TestUtils.withRecyclerView;
+import static org.hamcrest.CoreMatchers.not;
 
 public class AlbumListFragmentTest {
     @Rule
@@ -53,6 +56,23 @@ public class AlbumListFragmentTest {
 
         onView(withRecyclerView(R.id.recycler_list).atPosition(1))
                 .check(matches(withText("sunt qui excepturi placeat culpa")));
+
+        onView(withId(R.id.empty_list_message)).check(matches(not(isDisplayed())));
+    }
+
+    @Test
+    public void testEmptyAlbums() throws Exception{
+        String fileName = "zero_albums_response.json";
+        Context context = InstrumentationRegistry.getInstrumentation().getContext();
+        String jsonBody = TestUtils.getStringFromFile(context, fileName);
+        server.enqueue(new MockResponse()
+                .setResponseCode(200)
+                .setBody(jsonBody));
+
+        Intent intent = new Intent();
+        mActivityRule.launchActivity(intent);
+
+        onView(withId(R.id.empty_list_message)).check(matches(isDisplayed()));
     }
 
 

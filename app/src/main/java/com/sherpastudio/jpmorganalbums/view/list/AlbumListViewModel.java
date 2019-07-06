@@ -16,7 +16,7 @@ public class AlbumListViewModel extends ViewModel {
     private final MutableLiveData<List<Album>> mObservableAlbumsList;
     private final MutableLiveData<Boolean> mObservableIsLoading;
 
-    public final LiveData<Boolean> emptyList;
+    public final MutableLiveData<Boolean> emptyList;
     private final UseCaseHandler mUseCaseHandler;
     private final GetAlbumsUseCase mGetAlbumsUseCase;
 
@@ -25,6 +25,7 @@ public class AlbumListViewModel extends ViewModel {
         public void onSuccess(GetAlbumsUseCase.ResponseValue response) {
             mObservableIsLoading.postValue(false);
             mObservableAlbumsList.postValue(response.list);
+            emptyList.postValue(response.list.isEmpty());
         }
 
         @Override

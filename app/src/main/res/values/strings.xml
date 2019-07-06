@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">JPMorganAlbums</string>
-    <string name="empty_album_list">There are no albums</string>
+    <string name="empty_album_list">There is no album</string>
 </resources>
