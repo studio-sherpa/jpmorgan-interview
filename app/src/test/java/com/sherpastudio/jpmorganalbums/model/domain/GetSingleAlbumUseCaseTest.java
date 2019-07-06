@@ -18,30 +18,6 @@ import static org.junit.Assert.assertTrue;
 public class GetSingleAlbumUseCaseTest {
 
     @Test
-    public void getNullAlbum() {
-
-        IDataRepository mockLocalDataRepository = new IDataRepository() {
-            @Override
-            public List<Album> getAlbums() {
-                return null;
-            }
-
-            @Override
-            public void addAlbums(List<Album> albums) {}
-
-            @Override
-            public Album getSingleAlbum(long albumId) {
-                return null;
-            }
-        };
-
-        GetSingleAlbumUseCase useCase = new GetSingleAlbumUseCase(mockLocalDataRepository);
-        Album album = useCase.getAlbum(1);
-
-        assertNull(album);
-    }
-
-    @Test
     public void getSingleAlbum() {
 
         IDataRepository repoFound = new IDataRepository() {

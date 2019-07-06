@@ -16,6 +16,7 @@
         tools:context=".view.detail.AlbumDetailFragment">
 
         <TextView
+            android:id="@+id/title"
             style="@style/Album"
             android:layout_width="0dp"
             android:layout_height="0dp"
