@@ -1,13 +1,15 @@
-package com.sherpastudio.jpmorganalbums.model.repository.db;
+package com.sherpastudio.jpmorganalbums.model.repository.local;
 
 import com.sherpastudio.jpmorganalbums.model.IDataRepository;
 import com.sherpastudio.jpmorganalbums.model.data.Album;
-import com.sherpastudio.jpmorganalbums.model.repository.db.entity.AlbumEntity;
+import com.sherpastudio.jpmorganalbums.model.repository.local.db.AppDatabase;
+import com.sherpastudio.jpmorganalbums.model.repository.local.db.entity.AlbumEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class LocalRepository implements IDataRepository {
 
@@ -36,17 +38,24 @@ public class LocalRepository implements IDataRepository {
         mDatabase.albumsDao().insert(mapAlbums(albums));
     }
 
+    @Override
+    public Album getSingleAlbum(long albumId) {
+        AlbumEntity album = mDatabase.albumsDao().one(albumId);
+        if(album == null) return null;
+        return mapEntity(album);
+    }
 
-    private AlbumEntity mapAlbum(Album album){
+
+    private AlbumEntity mapAlbum(@NonNull Album album){
         return new AlbumEntity(album.getId(), album.getTitle());
     }
 
-    private Album mapEntity(AlbumEntity entity){
+    private Album mapEntity(@NonNull AlbumEntity entity){
         return new Album(entity.getId(), entity.getTitle());
     }
 
 
-    private List<AlbumEntity> mapAlbums(List<Album> albums) {
+    private List<AlbumEntity> mapAlbums(@NonNull List<Album> albums) {
         List<AlbumEntity> entities = new ArrayList<>(albums.size());
         for(Album album : albums){
             entities.add(mapAlbum(album));
@@ -55,7 +64,7 @@ public class LocalRepository implements IDataRepository {
     }
 
 
-    private List<Album> mapEntities(List<AlbumEntity> entities) {
+    private List<Album> mapEntities(@NonNull List<AlbumEntity> entities) {
         List<Album> albums = new ArrayList<>(entities.size());
         for(AlbumEntity entity : entities){
             albums.add(mapEntity(entity));

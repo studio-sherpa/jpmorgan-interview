@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-package com.sherpastudio.jpmorganalbums.model.repository.db.entity;
+package com.sherpastudio.jpmorganalbums.model.repository.local.db.entity;
 
 
-import com.sherpastudio.jpmorganalbums.model.repository.db.TableNames;
+import com.sherpastudio.jpmorganalbums.model.repository.local.db.TableNames;
 
 import java.util.Objects;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 

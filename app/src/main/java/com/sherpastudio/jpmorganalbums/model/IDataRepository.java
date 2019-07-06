@@ -6,5 +6,8 @@ import java.util.List;
 
 public interface IDataRepository {
     List<Album> getAlbums();
+
     void addAlbums(List<Album> albums);
+
+    Album getSingleAlbum(long albumId);
 }

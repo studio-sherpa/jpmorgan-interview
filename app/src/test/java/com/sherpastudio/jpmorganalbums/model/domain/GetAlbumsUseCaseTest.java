@@ -1,5 +1,6 @@
 package com.sherpastudio.jpmorganalbums.model.domain;
 
+import com.sherpastudio.jpmorganalbums.TestUtils;
 import com.sherpastudio.jpmorganalbums.model.IDataRepository;
 import com.sherpastudio.jpmorganalbums.model.data.Album;
 import com.sherpastudio.jpmorganalbums.model.repository.INetworkRepository;
@@ -26,6 +27,11 @@ public class GetAlbumsUseCaseTest {
 
             @Override
             public void addAlbums(List<Album> albums) {}
+
+            @Override
+            public Album getSingleAlbum(long albumId) {
+                return null;
+            }
         };
 
         IDataRepository mockLocalDataRepository = new IDataRepository() {
@@ -36,6 +42,11 @@ public class GetAlbumsUseCaseTest {
 
             @Override
             public void addAlbums(List<Album> albums) {}
+
+            @Override
+            public Album getSingleAlbum(long albumId) {
+                return null;
+            }
         };
 
         INetworkRepository mockOnlineNetworkRepository = () -> true;
@@ -55,28 +66,35 @@ public class GetAlbumsUseCaseTest {
 
     @Test
     public void getAlbums() {
-        List<Album> mockRemoteData = Arrays.asList(new Album(1, "title"));
-        List<Album> mockLocalData = Arrays.asList(new Album(2, "title 2"));
-
 
         IDataRepository mockRemoteDataRepository = new IDataRepository() {
             @Override
             public List<Album> getAlbums() {
-                return new ArrayList<>(mockRemoteData);
+                return Arrays.asList(TestUtils.createAlbum1());
             }
 
             @Override
             public void addAlbums(List<Album> albums) {}
+
+            @Override
+            public Album getSingleAlbum(long albumId) {
+                return null;
+            }
         };
 
         IDataRepository mockLocalDataRepository = new IDataRepository() {
             @Override
             public List<Album> getAlbums() {
-                return new ArrayList<>(mockLocalData);
+                return Arrays.asList(TestUtils.createAlbum2());
             }
 
             @Override
             public void addAlbums(List<Album> albums) {}
+
+            @Override
+            public Album getSingleAlbum(long albumId) {
+                return null;
+            }
         };
 
         INetworkRepository mockOnlineNetworkRepository = () -> true;
@@ -85,13 +103,11 @@ public class GetAlbumsUseCaseTest {
         GetAlbumsUseCase useCase = new GetAlbumsUseCase(mockRemoteDataRepository, mockLocalDataRepository, mockOnlineNetworkRepository);
         List<Album> onlineAlbums = useCase.getAlbums();
 
-        assertNotNull(onlineAlbums);
-        assertArrayEquals(mockRemoteData.toArray(), onlineAlbums.toArray());
+        assertEquals(Arrays.asList(TestUtils.createAlbum1()), onlineAlbums);
 
         useCase = new GetAlbumsUseCase(mockRemoteDataRepository, mockLocalDataRepository, mockOfflineNetworkRepository);
         List<Album> offlineAlbums = useCase.getAlbums();
 
-        assertNotNull(offlineAlbums);
-        assertArrayEquals(mockLocalData.toArray(), offlineAlbums.toArray());
+        assertEquals(Arrays.asList(TestUtils.createAlbum2()), offlineAlbums);
     }
 }

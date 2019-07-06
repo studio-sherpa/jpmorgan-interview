@@ -49,4 +49,9 @@ public class RemoteDataRepository implements IDataRepository {
 
     @Override
     public void addAlbums(List<Album> albums) {}
+
+    @Override
+    public Album getSingleAlbum(long albumId) {
+        return null;
+    }
 }

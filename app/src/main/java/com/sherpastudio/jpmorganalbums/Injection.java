@@ -2,16 +2,16 @@ package com.sherpastudio.jpmorganalbums;
 
 import android.content.Context;
 
-import com.sherpastudio.jpmorganalbums.MyApplication;
 import com.sherpastudio.jpmorganalbums.helper.UseCaseHandler;
-import com.sherpastudio.jpmorganalbums.helper.ViewModelFactory;
+import com.sherpastudio.jpmorganalbums.model.domain.GetSingleAlbumUseCase;
+import com.sherpastudio.jpmorganalbums.view.ViewModelFactory;
 import com.sherpastudio.jpmorganalbums.model.IDataRepository;
 import com.sherpastudio.jpmorganalbums.model.repository.INetworkRepository;
 import com.sherpastudio.jpmorganalbums.model.repository.NetworkRepository;
-import com.sherpastudio.jpmorganalbums.model.repository.db.LocalRepository;
+import com.sherpastudio.jpmorganalbums.model.repository.local.LocalRepository;
 import com.sherpastudio.jpmorganalbums.model.repository.remote.RemoteDataRepository;
 import com.sherpastudio.jpmorganalbums.model.domain.GetAlbumsUseCase;
-import com.sherpastudio.jpmorganalbums.model.repository.db.AppDatabase;
+import com.sherpastudio.jpmorganalbums.model.repository.local.db.AppDatabase;
 import com.sherpastudio.jpmorganalbums.model.repository.remote.RetrofitAlbumsClient;
 
 public class Injection {
@@ -43,6 +43,10 @@ public class Injection {
                 provideRemoteDataRepository(),
                 provideLocalRepository(),
                 provideNetworkRepository());
+    }
+
+    public static GetSingleAlbumUseCase provideGetSingleAlbumUseCase() {
+        return new GetSingleAlbumUseCase(provideLocalRepository());
     }
 
     public static Context provideApplicationContext(){

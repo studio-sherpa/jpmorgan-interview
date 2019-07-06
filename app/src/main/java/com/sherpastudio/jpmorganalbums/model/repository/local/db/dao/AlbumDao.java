@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-package com.sherpastudio.jpmorganalbums.model.repository.db.dao;
+package com.sherpastudio.jpmorganalbums.model.repository.local.db.dao;
 
 
-import com.sherpastudio.jpmorganalbums.model.repository.db.TableNames;
-import com.sherpastudio.jpmorganalbums.model.repository.db.entity.AlbumEntity;
+import com.sherpastudio.jpmorganalbums.model.repository.local.db.TableNames;
+import com.sherpastudio.jpmorganalbums.model.repository.local.db.entity.AlbumEntity;
 
 import java.util.List;
 
+import androidx.annotation.Nullable;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -33,6 +34,7 @@ public interface AlbumDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     long[] insert(List<AlbumEntity> recipes);
 
+    @Nullable
     @Query("select * from " + TableNames.TABLE_ALBUMS  + " where id = :albumId")
     AlbumEntity one(long albumId);
 

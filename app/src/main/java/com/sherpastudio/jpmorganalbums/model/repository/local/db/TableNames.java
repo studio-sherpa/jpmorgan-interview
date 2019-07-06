@@ -1,4 +1,4 @@
-package com.sherpastudio.jpmorganalbums.model.repository.db;
+package com.sherpastudio.jpmorganalbums.model.repository.local.db;
 
 /**
  * Created by diegopinedo on 17/02/2018.

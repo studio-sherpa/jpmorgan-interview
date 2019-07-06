@@ -1,15 +1,15 @@
-package com.sherpastudio.jpmorganalbums.model.repository.db;
+package com.sherpastudio.jpmorganalbums.model.repository.local.db;
 
 import android.content.Context;
 
-import com.sherpastudio.jpmorganalbums.model.repository.db.dao.AlbumDao;
-import com.sherpastudio.jpmorganalbums.model.repository.db.entity.AlbumEntity;
+import com.sherpastudio.jpmorganalbums.TestUtils;
+import com.sherpastudio.jpmorganalbums.model.repository.local.db.dao.AlbumDao;
+import com.sherpastudio.jpmorganalbums.model.repository.local.db.entity.AlbumEntity;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 import androidx.room.Room;
@@ -37,14 +37,12 @@ public class AppDatabaseTest {
 
     @Test
     public void testInsert() {
-        AlbumEntity entity = new AlbumEntity(1, "Title 1");
-
-        userDao.insert(Arrays.asList(entity));
+        userDao.insert(TestUtils.createListOfAlbumEntities());
 
         List<AlbumEntity> albums2 = userDao.all();
-        assertThat(albums2, hasItems(entity));
+        assertThat(albums2, hasItems(TestUtils.createAlbumEntity2(), TestUtils.createAlbumEntity1()));
 
-        AlbumEntity entity2 = userDao.one(entity.getId());
-        assertThat(entity2, is(entity));
+        AlbumEntity entity2 = userDao.one(TestUtils.ALBUM_ID_1);
+        assertThat(entity2, is(TestUtils.createAlbumEntity1()));
     }
 }

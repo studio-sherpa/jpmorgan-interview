@@ -2,8 +2,11 @@ package com.sherpastudio.jpmorganalbums.model.data;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class Album {
 
@@ -32,5 +35,14 @@ public class Album {
 
     public boolean isContentTheSame(Album newItem) {
         return getTitle().equals(newItem.getTitle());
+    }
+
+    @Override
+    public boolean equals(@Nullable Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Album album = (Album) o;
+        return mId == album.mId &&
+                Objects.equals(mTitle, album.mTitle);
     }
 }

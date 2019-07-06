@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.sherpastudio.jpmorganalbums.model.repository.db;
+package com.sherpastudio.jpmorganalbums.model.repository.local.db;
 
 import android.content.Context;
 
-import com.sherpastudio.jpmorganalbums.model.repository.db.dao.AlbumDao;
-import com.sherpastudio.jpmorganalbums.model.repository.db.entity.AlbumEntity;
+import com.sherpastudio.jpmorganalbums.model.repository.local.db.dao.AlbumDao;
+import com.sherpastudio.jpmorganalbums.model.repository.local.db.entity.AlbumEntity;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.room.Database;

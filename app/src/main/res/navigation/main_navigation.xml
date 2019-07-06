@@ -10,5 +10,17 @@
         android:name="com.sherpastudio.jpmorganalbums.view.list.AlbumListFragment"
         android:label="modules_fragment"
         tools:layout="@layout/album_list_fragment">
+        <action
+            android:id="@+id/detailAction"
+            app:destination="@id/albumDetailFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/albumDetailFragment"
+        android:name="com.sherpastudio.jpmorganalbums.view.detail.AlbumDetailFragment"
+        android:label="album_detail_fragment"
+        tools:layout="@layout/album_detail_fragment">
+        <argument
+            android:name="albumId"
+            app:argType="long"/>
     </fragment>
 </navigation>
