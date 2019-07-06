@@ -10,8 +10,9 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         style="@style/Album.Small"
-        android:text="TextView"
+        tools:text="ea voluptates maiores eos accusantium officiis tempore mollitia consequatur"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+    />
