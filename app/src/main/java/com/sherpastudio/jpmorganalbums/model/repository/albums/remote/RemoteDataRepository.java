@@ -13,24 +13,24 @@ import retrofit2.Response;
 public class RemoteDataRepository implements IDataRepository {
 
     private static RemoteDataRepository sInstance;
-    private final RetrofitAlbumsClient mRetrofitAlbumsClient;
+    private final AlbumsAPIService mService;
 
-    public static RemoteDataRepository getInstance(@NonNull RetrofitAlbumsClient retrofitAlbumsClient) {
+    public static RemoteDataRepository getInstance(@NonNull AlbumsAPIService service) {
         if (sInstance == null) {
-            sInstance = new RemoteDataRepository(retrofitAlbumsClient);
+            sInstance = new RemoteDataRepository(service);
         }
         return sInstance;
     }
 
-    private RemoteDataRepository(@NonNull RetrofitAlbumsClient retrofitAlbumsClient) {
-        this.mRetrofitAlbumsClient = retrofitAlbumsClient;
+    private RemoteDataRepository(@NonNull AlbumsAPIService service) {
+        this.mService = service;
     }
 
     @Override
     public List<Album> getAlbums() {
         Response<List<Album>> response;
         try {
-            response = mRetrofitAlbumsClient.getService().listAllFruits().execute();
+            response = mService.listAllFruits().execute();
 
             if (response.isSuccessful()) {
                 if (response.body() != null) {
@@ -42,7 +42,7 @@ public class RemoteDataRepository implements IDataRepository {
                 return null;
             }
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             return null;
         }
     }

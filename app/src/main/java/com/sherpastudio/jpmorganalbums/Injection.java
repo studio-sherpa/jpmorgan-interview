@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.sherpastudio.jpmorganalbums.helper.UseCaseHandler;
 import com.sherpastudio.jpmorganalbums.model.domain.GetSingleAlbumUseCase;
+import com.sherpastudio.jpmorganalbums.model.repository.albums.remote.AlbumsAPIService;
 import com.sherpastudio.jpmorganalbums.view.ViewModelFactory;
 import com.sherpastudio.jpmorganalbums.model.repository.albums.IDataRepository;
 import com.sherpastudio.jpmorganalbums.model.repository.INetworkRepository;
@@ -12,11 +13,11 @@ import com.sherpastudio.jpmorganalbums.model.repository.albums.local.LocalReposi
 import com.sherpastudio.jpmorganalbums.model.repository.albums.remote.RemoteDataRepository;
 import com.sherpastudio.jpmorganalbums.model.domain.GetAlbumsUseCase;
 import com.sherpastudio.jpmorganalbums.model.repository.albums.local.db.AppDatabase;
-import com.sherpastudio.jpmorganalbums.model.repository.albums.remote.RetrofitAlbumsClient;
+import com.sherpastudio.jpmorganalbums.model.repository.albums.remote.MyRetrofitClient;
 
 public class Injection {
 
-    private static final String DEBUG_ALBUMS_BASE_URL = "https://jsonplaceholder.typicode.com/";
+    public static String DEBUG_ALBUMS_BASE_URL = "https://jsonplaceholder.typicode.com/";
 
     public static ViewModelFactory provideViewModelFactory() {
         return ViewModelFactory.getInstance();
@@ -27,7 +28,8 @@ public class Injection {
     }
 
     public static IDataRepository provideRemoteDataRepository() {
-        return RemoteDataRepository.getInstance(RetrofitAlbumsClient.getInstance(DEBUG_ALBUMS_BASE_URL));
+        AlbumsAPIService service = MyRetrofitClient.getInstance(DEBUG_ALBUMS_BASE_URL).getService();
+        return RemoteDataRepository.getInstance(service);
     }
 
     public static IDataRepository provideLocalRepository(){

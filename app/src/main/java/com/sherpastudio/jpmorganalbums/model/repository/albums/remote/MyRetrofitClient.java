@@ -4,11 +4,11 @@ import androidx.annotation.NonNull;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RetrofitAlbumsClient {
-    private static RetrofitAlbumsClient sInstance;
+public class MyRetrofitClient implements IRetrofitClient{
+    private static MyRetrofitClient sInstance;
     private final AlbumsAPIService mService;
 
-    private RetrofitAlbumsClient(@NonNull String url){
+    private MyRetrofitClient(@NonNull String url){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -16,11 +16,12 @@ public class RetrofitAlbumsClient {
         mService = retrofit.create(AlbumsAPIService.class);
     }
 
-    public static RetrofitAlbumsClient getInstance(@NonNull String url){
-        if(sInstance == null) sInstance = new RetrofitAlbumsClient(url);
+    public static MyRetrofitClient getInstance(@NonNull String url){
+        if(sInstance == null) sInstance = new MyRetrofitClient(url);
         return sInstance;
     }
 
+    @Override
     public AlbumsAPIService getService() {
         return mService;
     }
