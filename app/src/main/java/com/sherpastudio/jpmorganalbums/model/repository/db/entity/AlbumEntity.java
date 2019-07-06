@@ -19,7 +19,10 @@ package com.sherpastudio.jpmorganalbums.model.repository.db.entity;
 
 import com.sherpastudio.jpmorganalbums.model.repository.db.TableNames;
 
+import java.util.Objects;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -51,5 +54,20 @@ public class AlbumEntity{
 
     public void setTitle(@NonNull String title) {
         this.title = title;
+    }
+
+    //Test equal, override equals() and hashCode()
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AlbumEntity album = (AlbumEntity) o;
+        return id == album.id &&
+                Objects.equals(title, album.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, id);
     }
 }

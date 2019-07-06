@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 
 import com.sherpastudio.jpmorganalbums.R;
 import com.sherpastudio.jpmorganalbums.databinding.AlbumListFragmentBinding;
-import com.sherpastudio.jpmorganalbums.helper.Injection;
+import com.sherpastudio.jpmorganalbums.Injection;
 
 public class AlbumListFragment extends Fragment {
 

@@ -1,8 +1,10 @@
-package com.sherpastudio.jpmorganalbums.helper;
+package com.sherpastudio.jpmorganalbums;
 
 import android.content.Context;
 
 import com.sherpastudio.jpmorganalbums.MyApplication;
+import com.sherpastudio.jpmorganalbums.helper.UseCaseHandler;
+import com.sherpastudio.jpmorganalbums.helper.ViewModelFactory;
 import com.sherpastudio.jpmorganalbums.model.IDataRepository;
 import com.sherpastudio.jpmorganalbums.model.repository.INetworkRepository;
 import com.sherpastudio.jpmorganalbums.model.repository.NetworkRepository;

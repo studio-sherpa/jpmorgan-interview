@@ -1,5 +1,6 @@
 package com.sherpastudio.jpmorganalbums.helper;
 
+import com.sherpastudio.jpmorganalbums.Injection;
 import com.sherpastudio.jpmorganalbums.view.list.AlbumListViewModel;
 
 import androidx.annotation.NonNull;

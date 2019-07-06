@@ -4,7 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.sherpastudio.jpmorganalbums.helper.Injection;
+import com.sherpastudio.jpmorganalbums.Injection;
 
 public class NetworkRepository implements INetworkRepository{
 
