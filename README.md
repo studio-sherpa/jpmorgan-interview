@@ -10,6 +10,7 @@ I use MVVM architecture:
 
 ### Views:
 The app has only one activity (MainActivity) and I use the Navigation component to handle the transitions between fragments.
+I also use DataBinding to populate the content of the layouts.
 
 ### View Models:
 Each View has its own View Model with LiveData objects so the views can observe changes on the data.
