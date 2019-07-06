@@ -36,8 +36,8 @@ I don't have experience with dagger so I have done my own dependency injection w
 
 
 ## Improvements
-- I could have use Dagger or any other depdency injection (I've heard great things about [Koin](https://github.com/InsertKoinIO/koin)
+- I could have use Dagger or any other depdency injection (I've heard great things about [Koin](https://github.com/InsertKoinIO/koin))
 - I could have added some images to the albums using any library like Picasso but the REST API does not include any link.
 - I have decided not to save the sate of the AlbumDetailFragment (the album id). I wanted to use [ AbstractSavedStateVMFactory](https://developer.android.com/topic/libraries/architecture/viewmodel-savedstate) but I didn't have time to do a proper research.
-- It could be nice if the RelativeLayout on the album list could change the LayoutManager (Linear to Grid) with a button. I didn't have time to do it but it will only required a new LiveData object on the view model and new ViewHolders on the adapter.
+- It could be nice if the RecyclerView on the album list could change the LayoutManager (Linear to Grid) with a button. I didn't have time to do it but it will only required a new LiveData object on the view model and new ViewHolders on the adapter.
 - The last thing I would have love to try is the new [ViewPager2](https://developer.android.com/jetpack/androidx/releases/viewpager2) to be able to navigate through the albums once you are on the detail view.
