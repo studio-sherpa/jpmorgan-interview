@@ -5,14 +5,14 @@ import android.content.Context;
 import com.sherpastudio.jpmorganalbums.helper.UseCaseHandler;
 import com.sherpastudio.jpmorganalbums.model.domain.GetSingleAlbumUseCase;
 import com.sherpastudio.jpmorganalbums.view.ViewModelFactory;
-import com.sherpastudio.jpmorganalbums.model.IDataRepository;
+import com.sherpastudio.jpmorganalbums.model.repository.albums.IDataRepository;
 import com.sherpastudio.jpmorganalbums.model.repository.INetworkRepository;
 import com.sherpastudio.jpmorganalbums.model.repository.NetworkRepository;
-import com.sherpastudio.jpmorganalbums.model.repository.local.LocalRepository;
-import com.sherpastudio.jpmorganalbums.model.repository.remote.RemoteDataRepository;
+import com.sherpastudio.jpmorganalbums.model.repository.albums.local.LocalRepository;
+import com.sherpastudio.jpmorganalbums.model.repository.albums.remote.RemoteDataRepository;
 import com.sherpastudio.jpmorganalbums.model.domain.GetAlbumsUseCase;
-import com.sherpastudio.jpmorganalbums.model.repository.local.db.AppDatabase;
-import com.sherpastudio.jpmorganalbums.model.repository.remote.RetrofitAlbumsClient;
+import com.sherpastudio.jpmorganalbums.model.repository.albums.local.db.AppDatabase;
+import com.sherpastudio.jpmorganalbums.model.repository.albums.remote.RetrofitAlbumsClient;
 
 public class Injection {
 

@@ -1,4 +1,4 @@
-package com.sherpastudio.jpmorganalbums.model.repository.remote;
+package com.sherpastudio.jpmorganalbums.model.repository.albums.remote;
 
 import com.sherpastudio.jpmorganalbums.model.data.Album;
 

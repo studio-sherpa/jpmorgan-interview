@@ -1,7 +1,7 @@
 package com.sherpastudio.jpmorganalbums.model.domain;
 
 import com.sherpastudio.jpmorganalbums.helper.UseCase;
-import com.sherpastudio.jpmorganalbums.model.IDataRepository;
+import com.sherpastudio.jpmorganalbums.model.repository.albums.IDataRepository;
 import com.sherpastudio.jpmorganalbums.model.data.Album;
 
 import androidx.annotation.NonNull;

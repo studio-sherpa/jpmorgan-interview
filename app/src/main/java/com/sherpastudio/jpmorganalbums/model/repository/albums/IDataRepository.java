@@ -1,4 +1,4 @@
-package com.sherpastudio.jpmorganalbums.model;
+package com.sherpastudio.jpmorganalbums.model.repository.albums;
 
 import com.sherpastudio.jpmorganalbums.model.data.Album;
 

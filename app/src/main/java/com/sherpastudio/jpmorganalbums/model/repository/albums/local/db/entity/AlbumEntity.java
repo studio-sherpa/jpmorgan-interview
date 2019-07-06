@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.sherpastudio.jpmorganalbums.model.repository.local.db.entity;
+package com.sherpastudio.jpmorganalbums.model.repository.albums.local.db.entity;
 
 
-import com.sherpastudio.jpmorganalbums.model.repository.local.db.TableNames;
+import com.sherpastudio.jpmorganalbums.model.repository.albums.local.db.TableNames;
 
 import java.util.Objects;
 

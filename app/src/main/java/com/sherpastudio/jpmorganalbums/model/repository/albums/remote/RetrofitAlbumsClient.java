@@ -1,4 +1,4 @@
-package com.sherpastudio.jpmorganalbums.model.repository.remote;
+package com.sherpastudio.jpmorganalbums.model.repository.albums.remote;
 
 import androidx.annotation.NonNull;
 import retrofit2.Retrofit;

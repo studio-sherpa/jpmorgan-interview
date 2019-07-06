@@ -1,15 +1,14 @@
-package com.sherpastudio.jpmorganalbums.model.repository.local;
+package com.sherpastudio.jpmorganalbums.model.repository.albums.local;
 
-import com.sherpastudio.jpmorganalbums.model.IDataRepository;
+import com.sherpastudio.jpmorganalbums.model.repository.albums.IDataRepository;
 import com.sherpastudio.jpmorganalbums.model.data.Album;
-import com.sherpastudio.jpmorganalbums.model.repository.local.db.AppDatabase;
-import com.sherpastudio.jpmorganalbums.model.repository.local.db.entity.AlbumEntity;
+import com.sherpastudio.jpmorganalbums.model.repository.albums.local.db.AppDatabase;
+import com.sherpastudio.jpmorganalbums.model.repository.albums.local.db.entity.AlbumEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 public class LocalRepository implements IDataRepository {
 

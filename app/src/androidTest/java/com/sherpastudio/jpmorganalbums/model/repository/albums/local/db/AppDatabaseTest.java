@@ -1,10 +1,10 @@
-package com.sherpastudio.jpmorganalbums.model.repository.local.db;
+package com.sherpastudio.jpmorganalbums.model.repository.albums.local.db;
 
 import android.content.Context;
 
 import com.sherpastudio.jpmorganalbums.TestUtils;
-import com.sherpastudio.jpmorganalbums.model.repository.local.db.dao.AlbumDao;
-import com.sherpastudio.jpmorganalbums.model.repository.local.db.entity.AlbumEntity;
+import com.sherpastudio.jpmorganalbums.model.repository.albums.local.db.dao.AlbumDao;
+import com.sherpastudio.jpmorganalbums.model.repository.albums.local.db.entity.AlbumEntity;
 
 import org.junit.After;
 import org.junit.Before;

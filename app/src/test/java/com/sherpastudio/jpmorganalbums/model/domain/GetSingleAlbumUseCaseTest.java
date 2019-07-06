@@ -1,14 +1,11 @@
 package com.sherpastudio.jpmorganalbums.model.domain;
 
 import com.sherpastudio.jpmorganalbums.TestUtils;
-import com.sherpastudio.jpmorganalbums.model.IDataRepository;
+import com.sherpastudio.jpmorganalbums.model.repository.albums.IDataRepository;
 import com.sherpastudio.jpmorganalbums.model.data.Album;
-import com.sherpastudio.jpmorganalbums.model.repository.INetworkRepository;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;

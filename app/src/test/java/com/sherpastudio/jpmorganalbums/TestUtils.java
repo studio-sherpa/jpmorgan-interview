@@ -1,7 +1,7 @@
 package com.sherpastudio.jpmorganalbums;
 
 import com.sherpastudio.jpmorganalbums.model.data.Album;
-import com.sherpastudio.jpmorganalbums.model.repository.local.db.entity.AlbumEntity;
+import com.sherpastudio.jpmorganalbums.model.repository.albums.local.db.entity.AlbumEntity;
 
 import java.util.Arrays;
 import java.util.List;
