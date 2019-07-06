@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.sherpastudio.jpmorganalbums.model.data.Album;
 import com.sherpastudio.jpmorganalbums.model.repository.albums.local.db.entity.AlbumEntity;
+import com.sherpastudio.jpmorganalbums.view.RecyclerViewMatcher;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -72,5 +73,10 @@ public class TestUtils {
         }
         reader.close();
         return sb.toString();
+    }
+
+    // Convenience helper
+    public static RecyclerViewMatcher withRecyclerView(final int recyclerViewId) {
+        return new RecyclerViewMatcher(recyclerViewId);
     }
 }
