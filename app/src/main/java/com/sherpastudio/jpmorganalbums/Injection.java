@@ -7,8 +7,8 @@ import com.sherpastudio.jpmorganalbums.model.domain.GetSingleAlbumUseCase;
 import com.sherpastudio.jpmorganalbums.model.repository.albums.remote.AlbumsAPIService;
 import com.sherpastudio.jpmorganalbums.view.ViewModelFactory;
 import com.sherpastudio.jpmorganalbums.model.repository.albums.IDataRepository;
-import com.sherpastudio.jpmorganalbums.model.repository.INetworkRepository;
-import com.sherpastudio.jpmorganalbums.model.repository.NetworkRepository;
+import com.sherpastudio.jpmorganalbums.model.repository.INetworkProvider;
+import com.sherpastudio.jpmorganalbums.model.repository.NetworkProvider;
 import com.sherpastudio.jpmorganalbums.model.repository.albums.local.LocalRepository;
 import com.sherpastudio.jpmorganalbums.model.repository.albums.remote.RemoteDataRepository;
 import com.sherpastudio.jpmorganalbums.model.domain.GetAlbumsUseCase;
@@ -36,15 +36,15 @@ public class Injection {
         return LocalRepository.getInstance(AppDatabase.getInstance(provideApplicationContext()));
     }
 
-    public static INetworkRepository provideNetworkRepository(){
-        return NetworkRepository.getInstance();
+    public static INetworkProvider provideNetworkProvider(){
+        return NetworkProvider.getInstance();
     }
 
     public static GetAlbumsUseCase provideGetAlbumsUseCase() {
         return new GetAlbumsUseCase(
                 provideRemoteDataRepository(),
                 provideLocalRepository(),
-                provideNetworkRepository());
+                provideNetworkProvider());
     }
 
     public static GetSingleAlbumUseCase provideGetSingleAlbumUseCase() {

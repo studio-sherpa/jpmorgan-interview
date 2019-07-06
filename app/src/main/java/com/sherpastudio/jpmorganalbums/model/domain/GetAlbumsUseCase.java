@@ -4,7 +4,7 @@ package com.sherpastudio.jpmorganalbums.model.domain;
 import com.sherpastudio.jpmorganalbums.helper.UseCase;
 import com.sherpastudio.jpmorganalbums.model.repository.albums.IDataRepository;
 import com.sherpastudio.jpmorganalbums.model.data.Album;
-import com.sherpastudio.jpmorganalbums.model.repository.INetworkRepository;
+import com.sherpastudio.jpmorganalbums.model.repository.INetworkProvider;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -22,16 +22,16 @@ public class GetAlbumsUseCase extends UseCase<GetAlbumsUseCase.RequestValues, Ge
 
     private final IDataRepository mRemoteDataRepository;
     private final IDataRepository mLocalDataRepository;
-    private final INetworkRepository mNetworkRepository;
+    private final INetworkProvider mNetworkProvider;
 
     private Comparator<? super Album> mTitleComparator = (Comparator<Album>) (o1, o2) -> o1.getTitle().compareTo(o2.getTitle());
 
     public GetAlbumsUseCase(@NonNull IDataRepository remoteDataRepository,
                             @NonNull IDataRepository DBRepository,
-                            @NonNull INetworkRepository networkRepository) {
+                            @NonNull INetworkProvider networkProvider) {
         this.mRemoteDataRepository = remoteDataRepository;
         this.mLocalDataRepository = DBRepository;
-        this.mNetworkRepository = networkRepository;
+        this.mNetworkProvider = networkProvider;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class GetAlbumsUseCase extends UseCase<GetAlbumsUseCase.RequestValues, Ge
     @Nullable
     public List<Album> getAlbums(){
         List<Album> albums;
-        if(mNetworkRepository.hasInternetConnection()){
+        if(mNetworkProvider.hasInternetConnection()){
             albums = mRemoteDataRepository.getAlbums();
             if(albums != null){
                 Collections.sort(albums, mTitleComparator);

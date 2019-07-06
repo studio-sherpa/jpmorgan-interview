@@ -3,7 +3,7 @@ package com.sherpastudio.jpmorganalbums.model.domain;
 import com.sherpastudio.jpmorganalbums.TestUtils;
 import com.sherpastudio.jpmorganalbums.model.repository.albums.IDataRepository;
 import com.sherpastudio.jpmorganalbums.model.data.Album;
-import com.sherpastudio.jpmorganalbums.model.repository.INetworkRepository;
+import com.sherpastudio.jpmorganalbums.model.repository.INetworkProvider;
 
 import org.junit.Test;
 
@@ -47,15 +47,15 @@ public class GetAlbumsUseCaseTest {
             }
         };
 
-        INetworkRepository mockOnlineNetworkRepository = () -> true;
-        INetworkRepository mockOfflineNetworkRepository = () -> false;
+        INetworkProvider mockOnlineNetworkProvider = () -> true;
+        INetworkProvider mockOfflineNetworkProvider = () -> false;
 
-        GetAlbumsUseCase useCase = new GetAlbumsUseCase(mockRemoteDataRepository, mockLocalDataRepository, mockOnlineNetworkRepository);
+        GetAlbumsUseCase useCase = new GetAlbumsUseCase(mockRemoteDataRepository, mockLocalDataRepository, mockOnlineNetworkProvider);
         List<Album> onlineAlbums = useCase.getAlbums();
 
         assertNull(onlineAlbums);
 
-        useCase = new GetAlbumsUseCase(mockRemoteDataRepository, mockLocalDataRepository, mockOfflineNetworkRepository);
+        useCase = new GetAlbumsUseCase(mockRemoteDataRepository, mockLocalDataRepository, mockOfflineNetworkProvider);
         List<Album> offlineAlbums = useCase.getAlbums();
 
         assertNull(offlineAlbums);
@@ -95,15 +95,15 @@ public class GetAlbumsUseCaseTest {
             }
         };
 
-        INetworkRepository mockOnlineNetworkRepository = () -> true;
-        INetworkRepository mockOfflineNetworkRepository = () -> false;
+        INetworkProvider mockOnlineNetworkProvider = () -> true;
+        INetworkProvider mockOfflineNetworkProvider = () -> false;
 
-        GetAlbumsUseCase useCase = new GetAlbumsUseCase(mockRemoteDataRepository, mockLocalDataRepository, mockOnlineNetworkRepository);
+        GetAlbumsUseCase useCase = new GetAlbumsUseCase(mockRemoteDataRepository, mockLocalDataRepository, mockOnlineNetworkProvider);
         List<Album> onlineAlbums = useCase.getAlbums();
 
         assertEquals(Arrays.asList(TestUtils.createAlbum1()), onlineAlbums);
 
-        useCase = new GetAlbumsUseCase(mockRemoteDataRepository, mockLocalDataRepository, mockOfflineNetworkRepository);
+        useCase = new GetAlbumsUseCase(mockRemoteDataRepository, mockLocalDataRepository, mockOfflineNetworkProvider);
         List<Album> offlineAlbums = useCase.getAlbums();
 
         assertEquals(Arrays.asList(TestUtils.createAlbum2()), offlineAlbums);

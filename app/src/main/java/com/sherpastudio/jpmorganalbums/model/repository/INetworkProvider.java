@@ -1,5 +1,5 @@
 package com.sherpastudio.jpmorganalbums.model.repository;
 
-public interface INetworkRepository {
+public interface INetworkProvider {
     boolean hasInternetConnection();
 }

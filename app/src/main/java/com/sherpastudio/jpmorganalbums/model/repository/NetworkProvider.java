@@ -6,18 +6,18 @@ import android.net.NetworkInfo;
 
 import com.sherpastudio.jpmorganalbums.Injection;
 
-public class NetworkRepository implements INetworkRepository{
+public class NetworkProvider implements INetworkProvider {
 
-    private static NetworkRepository sInstance;
+    private static NetworkProvider sInstance;
 
-    public static NetworkRepository getInstance() {
+    public static NetworkProvider getInstance() {
         if (sInstance == null) {
-            sInstance = new NetworkRepository();
+            sInstance = new NetworkProvider();
         }
         return sInstance;
     }
 
-    private NetworkRepository(){
+    private NetworkProvider(){
 
     }
 
