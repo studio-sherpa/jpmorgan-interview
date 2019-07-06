@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.sherpastudio.jpmorganalbums.MyApplication;
 import com.sherpastudio.jpmorganalbums.model.IDataRepository;
+import com.sherpastudio.jpmorganalbums.model.repository.INetworkRepository;
+import com.sherpastudio.jpmorganalbums.model.repository.NetworkRepository;
 import com.sherpastudio.jpmorganalbums.model.repository.db.LocalRepository;
 import com.sherpastudio.jpmorganalbums.model.repository.remote.RemoteDataRepository;
 import com.sherpastudio.jpmorganalbums.model.domain.GetAlbumsUseCase;
@@ -30,8 +32,15 @@ public class Injection {
         return LocalRepository.getInstance(AppDatabase.getInstance(provideApplicationContext()));
     }
 
+    public static INetworkRepository provideNetworkRepository(){
+        return NetworkRepository.getInstance();
+    }
+
     public static GetAlbumsUseCase provideGetAlbumsUseCase() {
-        return new GetAlbumsUseCase(provideRemoteDataRepository(), provideLocalRepository());
+        return new GetAlbumsUseCase(
+                provideRemoteDataRepository(),
+                provideLocalRepository(),
+                provideNetworkRepository());
     }
 
     public static Context provideApplicationContext(){
