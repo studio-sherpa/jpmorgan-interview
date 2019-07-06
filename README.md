@@ -42,3 +42,7 @@ I don't have experience with dagger so I have done my own dependency injection w
 - I have decided not to save the sate of the AlbumDetailFragment (the album id). I wanted to use [ AbstractSavedStateVMFactory](https://developer.android.com/topic/libraries/architecture/viewmodel-savedstate) but I didn't have time to do a proper research.
 - It could be nice if the RecyclerView on the album list could change the LayoutManager (Linear to Grid) with a button. I didn't have time to do it but it will only required a new LiveData object on the view model and new ViewHolders on the adapter.
 - The last thing I would have love to try is the new [ViewPager2](https://developer.android.com/jetpack/androidx/releases/viewpager2) to be able to navigate through the albums once you are on the detail view.
+
+## Binaries
+Download the [apk](https://www.dropbox.com/s/gx2qr9qi0f8klf5/AlbumsJPM.apk?dl=0) from my Dropbox
+
